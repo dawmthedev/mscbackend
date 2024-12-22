@@ -2,8 +2,9 @@
   "name": "mintairco-api",
   "version": "1.0.0",
   "main": "contact.js",
+  "type": "module",
   "scripts": {
-    "dev": "node dev.js"
+    "dev": "node api/dev.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

@@ -1,12 +1,6 @@
-const express = require("express");
-const nodemailer = require("nodemailer");
-const cors = require("cors");
-require("dotenv").config();
+import nodemailer from "nodemailer";
 
-const app = express();
-app.use(cors());
-app.use(express.json());
-
+// Email configuration
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -18,27 +12,37 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-app.post("/api/contact", async (req, res) => {
-  const { firstName, lastName, email, message } = req.body;
+// Serverless function handler
+export default async function handler(req, res) {
+  // CORS headers
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  const mailOptions = {
-    from: "Construction@voltaicnow.com",
-    to: ["info@mintair.co", "info@voltaicnow.com"],
-    subject: `New HVAC Lead from ${firstName} ${lastName} - via Mintair.co`,
-    text: `
-      Name: ${firstName} ${lastName}
-      Email: ${email}
-      Message: ${message}
-    `,
-  };
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
 
   try {
-    await transporter.sendMail(mailOptions);
-    res.status(200).json({ message: "Email sent successfully" });
+    const { firstName, lastName, email, message } = req.body;
+    await transporter.sendMail({
+      from: "Construction@voltaicnow.com",
+      to: ["info@mintair.co", "info@voltaicnow.com"],
+      subject: `New HVAC Lead from ${firstName} ${lastName} - via Mintair.co`,
+      text: `
+        Name: ${firstName} ${lastName}
+        Email: ${email}
+        Message: ${message}
+      `,
+    });
+    return res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
     console.error("Email error:", error);
-    res.status(500).json({ error: "Failed to send email" });
+    return res.status(500).json({ error: "Failed to send email" });
   }
-});
-
-module.exports = app;
+}

@@ -1,6 +1,14 @@
-const app = require("./contact");
-const port = 3001;
+import express from "express";
+import handler from "./contact.js";
+import cors from "cors";
 
-app.listen(port, () => {
-  console.log(`API running at http://localhost:${port}`);
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+app.use(cors());
+app.use(express.json());
+app.post("/api/contact", handler);
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
