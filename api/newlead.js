@@ -36,7 +36,7 @@ export default async function newLeadHandler(req, res) {
     subject: "New Lead Alert!",
     html: `
       <h2>New Lead Details</h2>
-      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Name:</strong> ${firstName} ${lastName}</p>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Message:</strong> ${message}</p>
     `,
