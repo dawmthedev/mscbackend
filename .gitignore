@@ -1,1 +1,24 @@
-.vercel
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+api/.env
+
+# Vercel
+.vercel/
+
+# Operating System
+.DS_Store
+
+# Test coverage
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
