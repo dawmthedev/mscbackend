@@ -32,7 +32,7 @@ export default async function contactHandler(req, res) {
     const { firstName, lastName, email, message } = req.body;
     await transporter.sendMail({
       from: "metaswapcapital@gmail.com",
-      to: ["fvaldovinos2000@gmail.co", "dominiqmartinez13@gmail.com"],
+      to: ["fvaldovinos2000@gmail.com", "dominiqmartinez13@gmail.com"],
       subject: `New BTM Lead from ${firstName} ${lastName} - via Metaswapcapital.com`,
       text: `
         Name: ${firstName} ${lastName}

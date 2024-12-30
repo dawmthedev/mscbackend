@@ -28,11 +28,11 @@ export default async function newLeadHandler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { name, email, message } = req.body;
+  const { firstName, lastName, email, message } = req.body;
 
   const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: ["fvaldovinos2000@gmail.co", "dominiqmartinez13@gmail.com"],
+    from: "metaswapcapital@gmail.com",
+    to: ["fvaldovinos2000@gmail.com", "dominiqmartinez13@gmail.com"],
     subject: "New Lead Alert!",
     html: `
       <h2>New Lead Details</h2>
