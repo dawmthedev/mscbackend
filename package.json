@@ -1,0 +1,23 @@
+{
+  "name": "metaswap-api",
+  "version": "1.0.0",
+  "main": "contact.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node api/dev.js",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nodemailer": "^6.9.16",
+    "@babel/preset-env": "^7.x.x",
+    "jest": "^29.x.x",
+    "supertest": "^6.x.x"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

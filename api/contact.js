@@ -4,8 +4,8 @@ import nodemailer from "nodemailer";
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "Construction@voltaicnow.com",
-    pass: "@Voltaic2024!!",
+    user: "metaswapcapital@gmail.com",
+    pass: "yoca kizb nftx pqjh",
   },
   tls: {
     rejectUnauthorized: false,
@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // Serverless function handler
-export default async function handler(req, res) {
+export default async function contactHandler(req, res) {
   // CORS headers
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -31,9 +31,9 @@ export default async function handler(req, res) {
   try {
     const { firstName, lastName, email, message } = req.body;
     await transporter.sendMail({
-      from: "Construction@voltaicnow.com",
-      to: ["info@mintair.co", "info@voltaicnow.com"],
-      subject: `New HVAC Lead from ${firstName} ${lastName} - via Mintair.co`,
+      from: "metaswapcapital@gmail.com",
+      to: ["fvaldovinos2000@gmail.co", "dominiqmartinez13@gmail.com"],
+      subject: `New BTM Lead from ${firstName} ${lastName} - via Metaswapcapital.com`,
       text: `
         Name: ${firstName} ${lastName}
         Email: ${email}
